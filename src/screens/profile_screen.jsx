@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './screen.css'
-
-export default function BattleScreen() {
+export default function ProfileScreen() {
   return (
     <div>
-      <h1>Battle Screen</h1>
+      <h1>Profile Screen</h1>
       <div className="buttons-container">
         <a href="/">Home</a>
       </div>

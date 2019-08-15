@@ -1,0 +1,22 @@
+/* possible class names? */
+/*
+.screen-container
+.btn-container
+.action-btn
+.header-title
+.header-section
+.content-section
+.player-container
+...
+*/
+h1 {
+  padding: 1rem;
+}
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+.buttons-container > * {
+  padding: 1rem;
+  outline: 1px solid rgba(0,0,0,.1);
+}
