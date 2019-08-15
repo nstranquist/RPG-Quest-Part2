@@ -1,0 +1,16 @@
+ToDo List (transcribed from notes)
+
+[]  Create Home and Battle Screen Components
+[]  Manage Navigation between 2 Screens
+[]  Add Basic UI to Home Screen, make subcomponents if needed
+[]  Create player.js to instantiate player object (move to redux store later(?)
+[]  Create /data and add data files for weapons and monsters
+[]  Display player data in homescreen
+[]  Display monster data in battle screen
+[]  Display player AND monster data in battle screen
+
+
+Full Game Loop should look like:
+1) See player info and UI in home screen
+2) Navigate to Battle Screen
+3) See monster info and player info in Battle Screen UI
