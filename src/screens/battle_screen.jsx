@@ -10,8 +10,9 @@ import './screen.css'
 export default function HomeScreen() {
   return (
     <div className="grid battle-grid">
-      <BoxHeader title='RPG Quest'
-        titlePadding='0 1.3em 0 .25em 0' />
+      <BoxHeader title='Battle'
+        titlePadding='0 1.3em 0 .25em 0'
+        colStart='2' colEnd='3' />
       <BoxSidebar sectionHeader='Player'
         imgSrc='/images/player-m-02.png'
         imgAlt='A brave warrior' />
