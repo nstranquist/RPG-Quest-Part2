@@ -9,32 +9,113 @@
 .player-container
 ...
 */
-.screen {
-  position: relative;
-  text-align: center;
-}
-.header_screen {
-  display: inline-block;
-  color: rgba(255,255,255,.9);
-  font-size: 2.4rem;
-  line-height: 2.4rem;
-  align-self: center;
-  padding: 2rem 2rem;
-  margin: .5rem;
-  padding-bottom: 2.5rem;
-  background: url('/images/bg-header.png'); /* 300 x 200 = 3:2 */
-  background-size: cover;
+/*:root {
+  --light-font-color: rgba(255,255,255,.9);
+}*/
+.aspect {
+  width: 100vw; 
+  height: 75vw; /* height:width ratio = 9/16 = .5625  */
+  background: pink;
+  max-height: 100vh;
+  max-width: 133.33vh; /* 16/9 = 1.778 */
+  margin: 0 auto;
+  position: absolute;
+  top:0;bottom:0; /* vertical center */
+  left:0;right:0; /* horizontal center */
+  background-image: url('/images/bg-screen.png');
   background-repeat: no-repeat;
+  background-size: cover;
+}
+.grid {
+  display: grid;
+  grid-template-rows: auto 5fr 5fr 5fr 5fr;
+  width: 100%;
+  height: 100%;
+}
+.home-grid {
+  grid-template-columns: 50% 25% 25%;
+}
+.battle-grid {
+  grid-template-columns: 40% 20% 40%;
+}
+.grid > * {
+  outline: 1px solid black;
+}
+.box-header {
+  /* grid */
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title-header {
+  display: inline-block;  
+  padding: 0 1.1em;
+  padding-bottom: .25em;
+  font-size: 2.5em;
+  line-height: 2em;
+  font-weight: 400;
+  color: gold;
+  background: url('/images/bg-header.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   background-position: center;
 }
-/*.buttons-container {
+.box-sidebar-left {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  grid-row-end: 6;
+}
+.box-sidebar-right {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 6;
+}
+.action-btn {
+  font-size: 1.5em;
+  line-height: 2em;
+  width: 75%;
+  text-align: center;
+}
+.container {
+  margin: 1em; /* must be 1/2 the width rem and height rem */
+  /* can optionally delete these */
+  width: calc(100% - 2em);
+  height: calc(100% - 2em);
+  outline: 1px solid black;
+  /*background: #333;*/
+  position: relative;
+}
+.btn-container {
+  background-image: url('/images/button.png');
+  background-repeat: no-repeat;
+  background-size: 75% auto;
+  background-position: center;
+  /* layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar {
   display: flex;
   flex-direction: column;
-}*/
-a {
-  display: block;
-  padding: 1rem 2rem;
-  margin: 1rem auto;
-  outline: 1px solid rgba(0,0,0,.1);
-  max-width: 8rem;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+.box-sidebar .img-fluid {
+  max-height: 100%;
+  height: 100%;
+  max-width: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  font-size: 2em;
+  line-height: 1.2em;
 }

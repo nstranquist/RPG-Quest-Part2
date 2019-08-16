@@ -2,7 +2,7 @@ ToDo List (transcribed from notes)
 
 [x]  Create Home and Battle Screen Components
 [x]  Manage Navigation between 2 Screens
-[]  Add Basic UI to Home Screen, make subcomponents if needed
+[x]  Add Basic UI to Home Screen, make subcomponents if needed
 []  Create player.js to instantiate player object (move to redux store later(?)
 []  Create /data and add/populate data files for weapons and monsters
 []  Display player data in homescreen
