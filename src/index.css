@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  font-size: 62.5%; /* set default font to 1rem=10px */
   font-family: sans-serif;
 }
 *,
@@ -10,12 +10,43 @@ html {
   margin: 0;
   padding: 0;
 }
-
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  font-size: 1.2rem; /* defaults to 12px */
+  line-height: 1.2rem;
+  background: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: #222; /* Charcoal */
+  text-align: center;
+  width: auto;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+.container {
+  max-width: 48rem; /* 480px */
+  width: 100%;
+  height: 32rem;
+  margin: 0 auto;
+  border: 5px solid green;
+  background: url('/images/bg-screen.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+a.action-btn {
+  background: url('/images/button.png'); /* 960 x 480 = 2:1 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: inline;
+  width: 100%;
 }

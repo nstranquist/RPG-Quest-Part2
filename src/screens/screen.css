@@ -9,14 +9,32 @@
 .player-container
 ...
 */
-h1 {
-  padding: 1rem;
+.screen {
+  position: relative;
+  text-align: center;
 }
-.buttons-container {
+.header_screen {
+  display: inline-block;
+  color: rgba(255,255,255,.9);
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  align-self: center;
+  padding: 2rem 2rem;
+  margin: .5rem;
+  padding-bottom: 2.5rem;
+  background: url('/images/bg-header.png'); /* 300 x 200 = 3:2 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*.buttons-container {
   display: flex;
   flex-direction: column;
-}
-.buttons-container > * {
-  padding: 1rem;
+}*/
+a {
+  display: block;
+  padding: 1rem 2rem;
+  margin: 1rem auto;
   outline: 1px solid rgba(0,0,0,.1);
+  max-width: 8rem;
 }

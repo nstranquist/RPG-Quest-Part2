@@ -4,11 +4,12 @@ import './screen.css'
 
 export default function HomeScreen() {
   return (
-    <div>
-      <h1>Home Screen</h1>
+    <div className="screen home-screen">
+      <h1 className="header_screen">Home Screen</h1>
+
       <div className='buttons-container'>
-        <a href="/battle">Battle</a>
-        <a href="/profile">Profile</a>
+        <a className="action-btn" href="/battle">Battle</a>
+        <a className="action-btn" href="/profile">Profile</a>
       </div>
     </div>
   )
