@@ -5,13 +5,16 @@ import BoxHeader from '../ui-components/box-header'
 import BoxSidebar from '../ui-components/box-sidebar'
 import ActionButton from '../ui-components/action-btn'
 import MessageBox from '../ui-components/box-messageboard'
+import MusicCheckbox from '../ui-components/checkbox-music'
 //import styles
 import './screen.css'
-import { relative } from 'path';
 import Battle from '../modules/battle';
 // import screens
 import TitleScreen from './title_screen'
 import BattleScreen from './battle_screen'
+import ProfileScreen from './profile_screen'
+import ShopScreen from './shop_screen'
+import CastleScreen from './castle_screen'
 
 // style variables
 const lineHeight = '4.5em';
@@ -21,29 +24,52 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.player = this.props.player;
-    this.toggleTitleScreen = this.toggleTitleScreen.bind(this);
-    this.toggleBattleScreen = this.toggleBattleScreen.bind(this);
+    this.toggleMusicCheckbox = this.toggleMusicCheckbox.bind(this);
+    this.toggleAudio = this.toggleAudio.bind(this);
+    this.toggleScreen = this.toggleScreen.bind(this);
     this.state = {
       titleActive: true,
       homeActive: false,
       battleActive: false,
+      profileActive: false,
+      shopActive: false,
     }
   }
 
-  toggleTitleScreen = () => {
+  toggleScreen = (e) => {
+    let screenName = e.screenName;
     this.setState({
-      titleActive: false,
-      homeActive: true,
-    })
-  }
-
-  toggleBattleScreen = () => {
-    console.log('battle triggered');
-    this.setState({
-      titleActive: false,
-      battleActive: this.state.battleActive ? false : true,
-      homeActive: this.state.homeActive ? false : true,
-    })
+      titleActive: false
+    });
+    switch (screenName) {
+      // can refactor these later to reduce code
+      case 'battle':
+        this.setState({
+          battleActive: this.state.battleActive ? false : true,
+        });
+        break;
+      case 'profile':
+        this.setState({
+          profileActive: this.state.profileActive ^= 1,
+        });
+        break;
+      case 'shop':
+        this.setState({
+          shopActive: this.state.shopActive ^= 1,
+        });
+        break;
+      case 'castle':
+        this.setState({
+          castleActive: this.state.castleActive ^= 1,
+        });
+        break;
+      case 'title':
+        this.setState({
+          homeActive: true,
+        });
+        break;
+    }
+    this.setState({ homeActive: this.state.homeActive ^= 1 });
     this.render();
   }
 
@@ -52,9 +78,9 @@ export default class HomeScreen extends React.Component {
     console.log(battle)
   }
 
-  toggleMusicCheckbox = () => {
-    let musicInput = document.getElementById('music-input');
-    musicInput.checked ^= 1;
+  toggleMusicCheckbox = () => { // uncheck box and toggle audio
+    // can use e.target to fix checkbox bug
+    document.getElementById('music-input').checked ^= 1;  //toggles checkbox
     this.toggleAudio();
   }
 
@@ -66,26 +92,32 @@ export default class HomeScreen extends React.Component {
   render() {
     if (this.state.titleActive) {
       return (
-        <TitleScreen toggleTitleScreen={this.toggleTitleScreen} />
+        <TitleScreen toggleTitleScreen={this.toggleScreen} />
       )
     }
     if (this.state.battleActive) {
       return (
-        <BattleScreen toggleBattleScreen={this.toggleBattleScreen} player={this.player} />
+        <BattleScreen toggleBattleScreen={this.toggleScreen} player={this.player} />
+      );
+    }
+    if (this.state.profileActive) {
+      return (
+        <ProfileScreen toggleProfileScreen={this.toggleScreen} player={this.player} />
+      );
+    }
+    if (this.state.shopActive) {
+      return (
+        <ShopScreen toggleShopScreen={this.toggleScreen} />
+      );
+    }
+    if (this.state.castleActive) {
+      return (
+        <CastleScreen toggleCastleScreen={this.toggleScreen} />
       );
     }
     return (
       <div className="grid home-grid">
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          padding: '.3em',
-          margin: '.3em'
-        }} onClick={this.toggleMusicCheckbox}>
-          <input id="music-input" type="checkbox" onChange={this.toggleAudio} />
-          <span style={{ color: 'white', paddingLeft: '.3em' }}>Music</span>
-        </div>
+        <MusicCheckbox toggleAudio={this.toggleAudio} toggleMusicCheckbox={this.toggleMusicCheckbox} />
         <div className='top-inventory' style={{
           position: 'absolute',
           top: '1em', left: '1em',
@@ -105,10 +137,10 @@ export default class HomeScreen extends React.Component {
         <BoxSidebar headerDisplay='none'
           imgSrc='/images/player-m-02.png'
           imgAlt='A brave warrior' />
-        <ActionButton onClick={this.toggleBattleScreen} toggleBattleScreen={this.toggleBattleScreen} linkName='Battle' lineHeight={lineHeight} margin='1em 0 0 1em' backgroundImage={actionBtnBg} />
-        <ActionButton linkName='Character' linkRoute='/home/profile' lineHeight={lineHeight} margin='1em 1em 0 0' backgroundImage={actionBtnBg} />
-        <ActionButton linkName='Shop' linkRoute='/home/shop' lineHeight={lineHeight} margin='0 0 1em 1em' backgroundImage={actionBtnBg} />
-        <ActionButton linkName='Castle' linkRoute='/home/castle' lineHeight={lineHeight} margin='0 1em 1em 0' backgroundImage={actionBtnBg} />
+        <ActionButton linkName='Battle' onClick={() => this.toggleScreen({ 'screenName': 'battle' })} toggleBattleScreen={this.toggleScreen} lineHeight={lineHeight} margin='1em 0 0 1em' backgroundImage={actionBtnBg} />
+        <ActionButton linkName='Character' onClick={() => this.toggleScreen({ 'screenName': 'profile' })} toggleProfileScreen={this.toggleScreen} lineHeight={lineHeight} margin='1em 1em 0 0' backgroundImage={actionBtnBg} />
+        <ActionButton linkName='Shop' onClick={() => this.toggleScreen({ 'screenName': 'shop' })} toggleShopScreen={this.toggleScreen} lineHeight={lineHeight} margin='0 0 1em 1em' backgroundImage={actionBtnBg} />
+        <ActionButton linkName='Castle' onClick={() => this.toggleScreen({ 'screenName': 'castle' })} toggleCastleScreen={this.toggleScreen} lineHeight={lineHeight} margin='0 1em 1em 0' backgroundImage={actionBtnBg} />
         <MessageBox message='Battle Monsters to start earning gold and xp!' />
       </div>
     )

@@ -3,12 +3,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // import Navigator from './navigator';
 // import screens
-import TitleScreen from './screens/home_screen'
+//import TitleScreen from './screens/home_screen'
 import HomeScreen from './screens/home_screen'
-import BattleScreen from './screens/battle_screen'
-import ProfileScreen from './screens/profile_screen'
-import ShopScreen from './screens/shop_screen'
-import CastleScreen from './screens/castle_screen'
+import LoginScreen from './screens/auth/login_screen'
+import SignUpScreen from './screens/auth/signup_screen'
 // import modules
 import Player from './modules/player' //pass into (all screens?)
 import RPG from './modules/rpg'  //keep running here
@@ -31,18 +29,13 @@ function App() { //app-container, container,
           />
           <Route
             exact
-            path="/home/profile"
-            component={ProfileScreen}
+            path="/login"
+            component={LoginScreen}
           />
           <Route
             exact
-            path="/home/shop"
-            component={ShopScreen}
-          />
-          <Route
-            exact
-            path="/home/castle"
-            component={CastleScreen}
+            path="/signup"
+            component={SignUpScreen}
           />
         </Switch>
       </BrowserRouter>

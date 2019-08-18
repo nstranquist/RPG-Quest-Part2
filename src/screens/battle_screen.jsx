@@ -12,10 +12,10 @@ import store from '../_redux/store'
 // import modules
 import Battle from '../modules/battle'
 
-// style variables
+// style variables, refactor later
 const lineHeight = '2em';
 const backgroundSize = '100% 120%';
-const margin = '0 0 .5em 0';
+const margin = '0 0 .5em 0'
 
 export default function BattleScreen({
   player, toggleBattleScreen
@@ -57,16 +57,19 @@ export default function BattleScreen({
         background: 'rgba(0,0,0,.6)',
         border: '3px solid red',
       }}>
-        <ActionButton onClick={handleTakeDamage} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName='Attack' />
-        <ActionButton onClick={handleUseItem} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName="Items" />
-        <ActionButton onClick={handleInventorySelect} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName="Weapons" />
-        <ActionButton onClick={handleInventorySelect} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName="Pets" />
-        <ActionButton onClick={toggleBattleScreen} lineHeight={lineHeight} backgroundSize={backgroundSize} margin='0' linkName="Flee" />
+        <ActionButton linkName='Attack' onClick={handleTakeDamage} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} />
+        <ActionButton linkName="Items" onClick={handleUseItem} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} />
+        <ActionButton linkName="Weapons" onClick={handleInventorySelect} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} />
+        <ActionButton linkName="Pets" onClick={handleInventorySelect} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} />
+        <ActionButton linkName="Flee" onClick={() => toggleBattleScreen({ 'screenName': 'battle' })} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={'0'} />
       </div>
     </div>
+
+
+
+
   )
 }
-
 
 /*
 <div className="simulateBtn" style={{

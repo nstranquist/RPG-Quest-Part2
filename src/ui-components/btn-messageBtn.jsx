@@ -5,18 +5,18 @@ export default function BoxMessageBtn({
 }) {
 
   return (
-    <div className="box_message-btn" style={{
+    <div className="box_message-btn" onClick={handleOnClick} style={{
       padding: '.5em',
       margin: '1em',
       marginTop: 0,
       background: '#896C42',
       border: '.25em solid #563E26',
       cursor: 'var(--cursor-pointer)'
-    }}>
+    }} >
       <div className="message-btn" style={{
         width: '100%', textAlign: 'center',
       }}>
-        <a onClick={handleOnClick} href={buttonRoute} style={{
+        <a href={buttonRoute} style={{
           letterSpacing: '3px', color: '#f7f7f7', cursor: 'var(--cursor-pointer)'
         }}>
           {buttonName}

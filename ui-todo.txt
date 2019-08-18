@@ -1,10 +1,10 @@
 []  move Player/Monster Header bar (in sidebar) to HUD display above the healthbar
       - maintain original border-radius an dimensions (to scale, of course)
-[]  experiment with box shadow around the character or character's HUD
-[]  create action_list.jsx component to hold list of <ActionButton/> components
+[x]  experiment with box shadow around the character or character's HUD
+[x]  create action_list.jsx component to hold list of <ActionButton/> components
 []  refactor inline styles [i.e. 'style={{...}}']
 []  break up 'screens.css' into smaller, more modularized css files, and organize the '/ui-components' directory
 
 Flex Items:
 []  make right panel in HomeScreen to look more like a "QuestBoard" with bulletings posted
-[]  make action-buttons list look more like a real battle menu (using backgrounds, borders, etc)
+[x]  make action-buttons list look more like a real battle menu (using backgrounds, borders, etc)
