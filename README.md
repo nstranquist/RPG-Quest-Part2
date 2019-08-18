@@ -1,6 +1,5 @@
 # RPG Quest Pt 2  
-### See Screenshots Below!  
-### Site is not deployed yet, still work in progress  
+### See Screenshots Below! Site not deployed yet  
 
 ## Goals and Challenges:  
 - Create cool game UI with multiple screens  
@@ -18,10 +17,10 @@
 - The right images and music can make a game come to life
 
 ## Screenshots:  
-![Overlay Screen (toggles music)](/screenshots/overlay.png)
-![Title Screen](/screenshots/title-screen.png)
-![Home Screen](/screenshots/home-screen.png)
-![Battle Screen](/screenshots/battle-screen.png)
-![Profile Screen](/screenshots/profile-screen.png)
-![Shop Screen](/screenshots/shop-screen.png)
-![Battle Screen](/screenshots/battle-screen.png)
+![Overlay Screen (starts music)](/screenshots/overlay-screen.png?raw=true "Overlay Screen (starts music)")
+![Title Screen](/screenshots/title-screen.png?raw=true "Title Screen")
+![Home Screen](/screenshots/home-screen.png?raw=true "Home Screen")
+![Battle Screen](/screenshots/battle-screen.png?raw=true "Battle Screen")
+![Profile Screen](/screenshots/profile-screen.png?raw=true "Profile Screen")
+![Shop Screen](/screenshots/shop-screen.png?raw=true "Shop Screen")
+![Castle Screen](/screenshots/castle-screen.png?raw=true "Castle Screen")
