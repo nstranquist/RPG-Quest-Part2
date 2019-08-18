@@ -18,7 +18,7 @@ const backgroundSize = '100% 120%';
 const margin = '0 0 .5em 0';
 
 export default function BattleScreen({
-  player
+  player, toggleBattleScreen
 }) {
   const battle = useState(new Battle(player));
   const winner = useState(false); //initial state
@@ -61,7 +61,7 @@ export default function BattleScreen({
         <ActionButton onClick={handleUseItem} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName="Items" />
         <ActionButton onClick={handleInventorySelect} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName="Weapons" />
         <ActionButton onClick={handleInventorySelect} lineHeight={lineHeight} backgroundSize={backgroundSize} margin={margin} linkName="Pets" />
-        <ActionButton lineHeight={lineHeight} backgroundSize={backgroundSize} margin='0' linkName="Flee" linkRoute='/home' />
+        <ActionButton onClick={toggleBattleScreen} lineHeight={lineHeight} backgroundSize={backgroundSize} margin='0' linkName="Flee" />
       </div>
     </div>
   )

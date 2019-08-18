@@ -3,6 +3,7 @@ import React from 'react';
 export default function BoxMessageBtn({
   buttonName, handleOnClick, buttonRoute
 }) {
+
   return (
     <div className="box_message-btn" style={{
       padding: '.5em',

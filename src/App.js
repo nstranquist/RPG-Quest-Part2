@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // import Navigator from './navigator';
 // import screens
+import TitleScreen from './screens/home_screen'
 import HomeScreen from './screens/home_screen'
 import BattleScreen from './screens/battle_screen'
 import ProfileScreen from './screens/profile_screen'
@@ -27,11 +28,6 @@ function App() { //app-container, container,
             exact
             path="/home"
             render={(props) => <HomeScreen {...props} player={myPlayer} myRPG={myRPG} />}
-          />
-          <Route
-            exact
-            path="/home/battle"
-            render={(props) => <BattleScreen {...props} player={myPlayer} />}
           />
           <Route
             exact
