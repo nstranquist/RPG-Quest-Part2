@@ -6,8 +6,7 @@ import BoxSidebar from '../ui-components/box-sidebar'
 import ActionButton from '../ui-components/action-btn'
 import MessageBox from '../ui-components/box-messageboard'
 import MusicCheckbox from '../ui-components/checkbox-music'
-//import styles
-import './screen.css'
+// import modules
 import Battle from '../modules/battle';
 // import screens
 import TitleScreen from './title_screen'
@@ -15,7 +14,8 @@ import BattleScreen from './battle_screen'
 import ProfileScreen from './profile_screen'
 import ShopScreen from './shop_screen'
 import CastleScreen from './castle_screen'
-
+//import styles
+import './screen.css'
 // style variables
 const lineHeight = '4.5em';
 const actionBtnBg = 'url(/images/minecraft-wood.jpeg)';
@@ -28,48 +28,14 @@ export default class HomeScreen extends React.Component {
     this.toggleAudio = this.toggleAudio.bind(this);
     this.toggleScreen = this.toggleScreen.bind(this);
     this.state = {
-      titleActive: true,
-      homeActive: false,
-      battleActive: false,
-      profileActive: false,
-      shopActive: false,
+      screenActive: 'title'
     }
   }
 
   toggleScreen = (e) => {
-    let screenName = e.screenName;
     this.setState({
-      titleActive: false
-    });
-    switch (screenName) {
-      // can refactor these later to reduce code
-      case 'battle':
-        this.setState({
-          battleActive: this.state.battleActive ? false : true,
-        });
-        break;
-      case 'profile':
-        this.setState({
-          profileActive: this.state.profileActive ^= 1,
-        });
-        break;
-      case 'shop':
-        this.setState({
-          shopActive: this.state.shopActive ^= 1,
-        });
-        break;
-      case 'castle':
-        this.setState({
-          castleActive: this.state.castleActive ^= 1,
-        });
-        break;
-      case 'title':
-        this.setState({
-          homeActive: true,
-        });
-        break;
-    }
-    this.setState({ homeActive: this.state.homeActive ^= 1 });
+      screenActive: e.screenName,
+    })
     this.render();
   }
 
@@ -90,31 +56,30 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    if (this.state.titleActive) {
+    if (this.state.screenActive !== 'home') {
+      let screenComponent;
+      switch (this.state.screenActive) {
+        case 'title':
+          screenComponent = <TitleScreen toggleScreen={this.toggleScreen} />
+          break;
+        case 'battle':
+          screenComponent = <BattleScreen toggleScreen={this.toggleScreen} player={this.player} />
+          break;
+        case 'profile':
+          screenComponent = <ProfileScreen toggleScreen={this.toggleScreen} player={this.player} />
+          break;
+        case 'shop':
+          screenComponent = <ShopScreen toggleScreen={this.toggleScreen} />
+          break;
+        case 'castle':
+          screenComponent = <CastleScreen toggleScreen={this.toggleScreen} />
+          break;
+      }
       return (
-        <TitleScreen toggleTitleScreen={this.toggleScreen} />
-      )
-    }
-    if (this.state.battleActive) {
-      return (
-        <BattleScreen toggleBattleScreen={this.toggleScreen} player={this.player} />
+        screenComponent
       );
     }
-    if (this.state.profileActive) {
-      return (
-        <ProfileScreen toggleProfileScreen={this.toggleScreen} player={this.player} />
-      );
-    }
-    if (this.state.shopActive) {
-      return (
-        <ShopScreen toggleShopScreen={this.toggleScreen} />
-      );
-    }
-    if (this.state.castleActive) {
-      return (
-        <CastleScreen toggleCastleScreen={this.toggleScreen} />
-      );
-    }
+
     return (
       <div className="grid home-grid">
         <MusicCheckbox toggleAudio={this.toggleAudio} toggleMusicCheckbox={this.toggleMusicCheckbox} />

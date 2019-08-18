@@ -3,7 +3,7 @@ import BoxHeader from '../ui-components/box-header'
 import BoxMessageButton from '../ui-components/btn-messageBtn'
 
 export default function TitleScreen({
-  toggleTitleScreen
+  toggleScreen
 }) {
 
   const toggleOverlay = () => {
@@ -51,7 +51,7 @@ export default function TitleScreen({
       }}>
         <BoxHeader title='RPG Quest' fontSize='3em' style={{ display: 'absolute', top: '1em' }} />
         <div>
-          <BoxMessageButton handleOnClick={() => toggleTitleScreen({ 'screenName': 'title' })} buttonName='Start Game' />
+          <BoxMessageButton handleOnClick={() => toggleScreen({ 'screenName': 'home' })} buttonName='Start Game' />
           <BoxMessageButton buttonName='Credits' />
         </div>
       </div >

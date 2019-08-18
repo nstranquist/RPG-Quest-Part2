@@ -13,13 +13,13 @@ const backgroundSize = '100% 200%';
 const margin = '0 0 .5em 0';
 
 export default function ProfileScreen({
-  toggleProfileScreen
+  toggleScreen
 }) {
   return (
     <div className="grid profile-grid">
       <div style={{
         postion: 'absolute', top: 0, right: 0, color: 'white', padding: '.2em', margin: '.2em'
-      }} onClick={() => { toggleProfileScreen({ 'screenName': 'profile' }) }}>
+      }} onClick={() => { toggleScreen({ 'screenName': 'home' }) }}>
         <a style={{ color: 'white' }}>Back</a>
       </div>
       <BoxHeader title='Character' />
