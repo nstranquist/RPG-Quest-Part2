@@ -1,13 +1,21 @@
 import React from 'react'
 
 export default function ActionButton({
-  linkRoute, linkName, fontSize, lineHeight
+  linkRoute, linkName, lineHeight, margin, backgroundImage, backgroundSize, onClick
 }) {
   return (
-    <div className="box-btn">
-      <div className="container btn-container">
+    <div className="box-btn" style={{
+      margin: margin,
+      backgroundImage: backgroundImage,
+    }}>
+      <div className="container btn-container" style={{
+        backgroundSize: backgroundSize,
+      }}>
         <a href={linkRoute} className="action-btn"
-          style={{ fontSize: fontSize, lineHeight: lineHeight }}>
+          style={{
+            lineHeight: lineHeight, userSelect: 'none', MozUserSelect: 'none'
+          }}
+          onClick={onClick}>
           {linkName}
         </a>
       </div>

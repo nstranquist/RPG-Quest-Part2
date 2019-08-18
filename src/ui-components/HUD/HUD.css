@@ -1,0 +1,54 @@
+.HUD {
+  position: absolute;
+  top: .5em;
+  display: flex;
+  align-items: center;
+}
+.HUD-right{
+  right: 1em;
+  flex-direction: row-reverse;
+}
+.HUD-left {
+  left: 1em;
+}
+.circle {
+  height: 5em;
+  width: 5em;
+  color: red;
+  background: #333;
+  border-radius: 100%;
+  border: 3px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.statbars {
+  display: flex;
+  flex-direction: column;
+  margin-left: -.14em;
+}
+.HUD-right .statbars {
+  margin-right: -.14em;
+}
+.HUD-bar {
+  height: .8em;
+  width: 10em;
+  border: 1px solid gold;
+}
+.healthbar {
+  background: #DC0000;
+  border-top-right-radius: 5px;
+}
+.manabar {
+  background: blue;
+  border-bottom-right-radius: 5px;
+}
+.HUD-right .healthbar {
+  border-top-right-radius: 0;
+  border-top-left-radius: 5px;
+}
+.HUD-right .manabar {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 5px;
+}

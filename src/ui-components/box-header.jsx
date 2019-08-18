@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function BoxHeader({
-  title, titlePadding, colStart, colEnd
+  title, titlePadding, fontSize, colStart=1, colEnd
 }) {
   return (
     <div className="box-header">
@@ -9,7 +9,8 @@ export default function BoxHeader({
         style={{
           padding: titlePadding,
           gridColumnStart: colStart,
-          gridColumnEnd: colEnd
+          gridColumnEnd: colEnd,
+          fontSize: fontSize
         }}>
         {title}</h1>
     </div>
