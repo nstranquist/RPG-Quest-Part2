@@ -15,14 +15,13 @@ import './screen.css'
 export default class BattleScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.endGame = this.endGame.bind(this); // bind event so battle class can use    
     this.toggleScreen = this.props.toggleScreen;
     this.state = {
       winner: false,
       whoWon: '',
       playersTurn: Math.floor(Math.random() * 2) === 0 ? true : false,
     }
-    this.battle = new Battle(this.props.player, this.endGame); // create new battle instance
+    this.battle = new Battle(this.props.player); // create new battle instance
     this.startBattle();
   }
 
@@ -36,7 +35,7 @@ export default class BattleScreen extends React.Component {
     console.log(this.state.playersTurn);
     if (this.props.player.health <= 0) {
       console.log('You are already... DEAD');
-      setTimeout(() => this.toggleScreen({ 'screenName': 'home' }), 2500);
+      this.toggleScreen({ 'screenName': 'home' });
     }
     this.battle.startBattle();
     if (!this.state.playersTurn) {

@@ -17,8 +17,8 @@ export default class Battle {
     this.printStats();
   }
 
-  checkGameOver() {
-    if (this.monster.health <= 0 || this.player.health <= 0)
+  checkGameOver(character) {
+    if (character.health <= 0)
       return true;
     return false;
   }
@@ -31,14 +31,14 @@ export default class Battle {
     //this.monster.takeDamage(this.player.damage) > 0 ? this.logRound(this.player, this.monster) : this.endGame(this.player.name);
     this.monster.takeDamage(this.player.damage);
     this.logRound(this.player, this.monster);
-    return this.checkGameOver();
+    return this.checkGameOver(this.monster);
     //this.startMonsterRound(); // add dealy eventually with UI
   }
   startMonsterRound() {
     //this.player.takeDamage(this.monster.damage) > 0 ? this.logRound(this.monster, this.player) : this.endGame(this.monster.name);
     this.player.takeDamage(this.monster.damage);
     this.logRound(this.monster, this.player);
-    return this.checkGameOver();
+    return this.checkGameOver(this.player);
   }
 
   logRound(attacker, defender) {
