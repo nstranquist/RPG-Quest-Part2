@@ -13,7 +13,7 @@ export default function TitleScreen({
   }
 
   const toggleAudio = () => {
-    document.getElementById('title_music').play();
+    document.getElementById('title_music').pause();
   }
 
   return (
