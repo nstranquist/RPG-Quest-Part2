@@ -3,25 +3,27 @@ import Monster from '../data/monsters';
 
 export default class Battle {
   constructor(player) {
-    this.player = player;
-    this.monster = new Monster(player.lvl);
+    this.player = player; // later change to only include the relevant parts
+    this.monster = new Monster(this.player.stats.lvl);
+    this.playerFirst = Math.floor(Math.random() * 2) === 0 ? true : false; //player first is true or false, depends on the luck
+    this.whoseTurn = this.playerFirst * 1; // experiment with pointer related errors
     this.state = {
+      winner: false,
     }
-    this.whoseTurn = Math.floor(Math.random() * 2) === 0 ? this.state.player : this.state.monster; //
-    this.winner = false;
   }
 
   startBattle() {
+    console.log('startBattle()!!!');
     while (!this.winner) {
-      if (this.whoseTurn === 0) {
+      if (this.playerFirst) {
         // player moves first
         this.startRound(this.player, this.monster)
-        if (!this.winner)
+        if (!this.state.winner)
           this.startRound(this.monster, this.player)
       } else {
         // monster moves first
         this.startRound(this.monster, this.player)
-        if (!this.winner)
+        if (!this.state.winner)
           this.startRound(this.player, this.monster)
       }
     }
@@ -29,6 +31,7 @@ export default class Battle {
   }
   //determine who goes first (luck)  <-- pass as parameters to gameLoop() function
   startRound(attacker, defender) {
+    console.log('startRound()!!!');
     console.log(attacker.damage)
     this.winner = defender.takeDamage(attacker.damage) > 0 ? false : true;
     this.whoseTurn === 0 ? this.whoseTurn = 1 : this.whoseTurn = 0;

@@ -8,11 +8,10 @@ import HomeScreen from './screens/home_screen'
 import LoginScreen from './screens/auth/login_screen'
 import SignUpScreen from './screens/auth/signup_screen'
 // import modules
-import Player from './modules/player' //pass into (all screens?)
+//import Player from './modules/player' //pass into (all screens?)
 import RPG from './modules/rpg'  //keep running here
 
 const myRPG = new RPG();
-const myPlayer = new Player('nico');
 
 // do i really want to be routing?? Or just swapping out the renders?
 
@@ -25,7 +24,7 @@ function App() { //app-container, container,
           <Route
             exact
             path="/home"
-            render={(props) => <HomeScreen {...props} player={myPlayer} myRPG={myRPG} />}
+            render={(props) => <HomeScreen {...props} myRPG={myRPG} />}
           />
           <Route
             exact

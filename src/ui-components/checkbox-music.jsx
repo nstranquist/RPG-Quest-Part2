@@ -11,8 +11,8 @@ export default function MusicCheckbox({
       padding: '.3em',
       margin: '.3em'
     }} >
-      <input id="music-input" type="checkbox" onClick={toggleAudio} checked />
-      <span style={{ color: 'white', paddingLeft: '.3em', userSelect: 'none' }} onClick={toggleMusicCheckbox}>Music</span>
+      <input id="music-input" type="checkbox" onChange={toggleAudio} />
+      <span style={{ color: 'white', paddingLeft: '.3em', userSelect: 'none' }} onClick={toggleMusicCheckbox}>Mute</span>
     </div>
   );
 }

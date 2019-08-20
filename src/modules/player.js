@@ -1,7 +1,13 @@
 // (maybe) import {store} later from 'redux'
 import { connect } from 'react-redux'
 // in store, we want to store health, (?)[gold, lvl, xp]
-
+// health/mana data
+const healthData = [
+  100, 120, 140, 160, 180, 200
+];
+const manaData = [
+  200, 240, 280, 320, 360
+];
 
 export default class Player {
   constructor(name) {
@@ -12,9 +18,11 @@ export default class Player {
     // should I use state here, or just store the data?
     // maybe can use later, for now Ill use as a data store, no state
     // lvl 2 data makes most senes for state, needs more frequent updates
-    this.xp = 0;
-    this.gold = 0;
-    this.lvl = 0;
+    this.stats = {
+      xp: 0,
+      gold: 0,
+      lvl: 0,
+    }
     this.damage = 3;  // hardcoding for now
     this.inventory = {  // ignoring for now
       items: [],
@@ -22,6 +30,7 @@ export default class Player {
       armor: [],
       pets: []
     }
+    // if i want to persist health accross multiple battles:
     this.state = {
       health: this.maxHealth,
       mana: this.maxMana
@@ -38,6 +47,9 @@ export default class Player {
   getHealth() {
     return this.state.health;
   }
+  getMaxHealth() {
+    return this.maxHealth;
+  }
 
   startHeal() {
     // player will heal when 'resting' at a given rate (i.e. max health in 30 minutes)
@@ -50,8 +62,8 @@ export default class Player {
   }
 
   addBattleReward(xp, gold, items = []) {
-    this.xp += xp;
-    this.gold += gold;
+    this.stats.xp += xp;
+    this.stats.gold += gold;
     items.forEach(item => {
       this.inventory.items.push(item);
     });
@@ -62,10 +74,3 @@ export default class Player {
   purchaseInventory(cost) { }
 
 }
-
-const healthData = [
-  100, 120, 140, 160, 180, 200
-];
-const manaData = [
-  200, 240, 280, 320, 360
-];
